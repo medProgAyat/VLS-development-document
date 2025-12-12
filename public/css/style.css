@@ -1,443 +1,477 @@
 /* استایل کلی */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Vazirmatn', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Vazirmatn", sans-serif;
 }
 
 body {
-    background-color: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 /* نوار ابزار */
 .toolbar {
-    background: #2c3e50;
-    padding: 15px;
-    display: flex;
-    gap: 10px;
-    direction: ltr;
+  background: #2c3e50;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  direction: ltr;
 }
 
 .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
 }
 
 .print-btn {
-    background: #3498db;
-    color: white;
+  background: #3498db;
+  color: white;
 }
 
 .print-btn:hover {
-    background: #2980b9;
+  background: #2980b9;
 }
 
 .save-btn {
-    background: #27ae60;
-    color: white;
+  background: #27ae60;
+  color: white;
 }
 
 .save-btn:hover {
-    background: #219653;
+  background: #219653;
 }
 
 .reset-btn {
-    background: #e74c3c;
-    color: white;
+  background: #e74c3c;
+  color: white;
 }
 
 .reset-btn:hover {
-    background: #c0392b;
+  background: #c0392b;
 }
 
 /* صفحه قابل پرینت */
 .printable-page {
-    padding: 30px;
+  padding: 30px;
 }
 
 @media print {
-    .toolbar {
-        display: none !important;
-    }
-    
-    .printable-page {
-        padding: 0;
-        box-shadow: none;
-    }
-    
-    body {
-        background: white;
-        padding: 0;
-    }
-    
-    .noPrint {
-        display: none;
-    }
+  .toolbar {
+    display: none !important;
+  }
+
+  .printable-page {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .noPrint {
+    display: none;
+  }
+  .info-item,
+  .project-info .info-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .info-item span,
+  .project-info .info-row span {
+    font-weight: 600;
+    color: black !important;
+  }
+
+  .info-item input,
+  .project-info input {
+    border: none !important;
+    border-bottom: 1px solid #999 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    min-width: auto;
+    padding: 0 5px !important;
+  }
+
+  .number-input,
+  .date-input,
+  .version-input {
+    direction: ltr !important;
+    text-align: left !important;
+  }
+  .logo-placeholder {
+    border: 0 !important;
+  }
 }
 
 /* هدر سند */
 .document-header {
-    border-bottom: 3px solid #2c3e50;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+  border-bottom: 3px solid #2c3e50;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .logo-section {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .logo-placeholder {
-    width: 150px;
-    height: 100px;
-    border: 2px dashed #7f8c8d;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #7f8c8d;
-    font-size: 14px;
+  width: 150px;
+  height: 100px;
+  border: 2px dashed #7f8c8d;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7f8c8d;
+  font-size: 14px;
 }
 
 .logo-placeholder i {
-    font-size: 40px;
-    margin-bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .header-grid {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .header-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .header-col {
-    flex: 1;
-    padding: 0 15px;
+  flex: 1;
+  padding: 0 15px;
 }
 
 .middle-col {
-    flex: 1.5;
-    text-align: center;
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+  flex: 1.5;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 }
 
 .info-item {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .info-item span {
-    font-weight: 600;
-    color: #2c3e50;
-    margin-left: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-left: 10px;
 }
 
-.number-input, .date-input, .version-input {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 14px;
-    margin-top: 5px;
+.number-input,
+.date-input,
+.version-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .document-title h1 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 28px;
 }
 
 .project-info .info-row {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .project-info .info-row span {
-    min-width: 150px;
-    font-weight: 600;
-    color: #2c3e50;
+  min-width: 150px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
 .project-info input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /* جدول الزامات */
 .requirements-table-container {
-    margin: 30px 0;
-    overflow-x: auto;
+  margin: 30px 0;
+  overflow-x: auto;
 }
 
 .requirements-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ddd;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
 }
 
 .requirements-table th {
-    background: #2c3e50;
-    color: white;
-    padding: 15px 10px;
-    text-align: center;
-    font-weight: 600;
-    border: 1px solid #34495e;
+  background: #2c3e50;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #34495e;
 }
 
 .requirements-table .sub-header {
-    font-size: 12px;
-    font-weight: normal;
-    margin-top: 5px;
-    opacity: 0.9;
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 5px;
+  opacity: 0.9;
 }
 
 .requirements-table td {
-    padding: 12px 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    vertical-align: middle;
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .requirements-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
 .requirements-table tr:hover {
-    background-color: #e8f4fc;
+  background-color: #e8f4fc;
 }
 
 .requirement-text {
-    text-align: right !important;
-    padding: 10px !important;
+  text-align: right !important;
+  padding: 10px !important;
 }
 
 .action-buttons {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
 }
 
 .action-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
 }
 
 .edit-btn {
-    background: #3498db;
-    color: white;
+  background: #3498db;
+  color: white;
 }
 
 .delete-btn {
-    background: #e74c3c;
-    color: white;
+  background: #e74c3c;
+  color: white;
 }
 
 .add-row-btn {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s;
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s;
 }
 
 .add-row-btn:hover {
-    background: #219653;
+  background: #219653;
 }
 
 /* فوتر */
 .document-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 2px solid #2c3e50;
-    text-align: center;
-    color: #7f8c8d;
-    font-size: 14px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #2c3e50;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 14px;
 }
 
 .document-footer p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* مودال */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    direction: rtl;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  direction: rtl;
 }
 
 .modal-content {
-    background: white;
-    width: 90%;
-    max-width: 600px;
-    margin: 50px auto;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal-header {
-    background: #2c3e50;
-    color: white;
-    padding: 20px;
-    border-radius: 8px 8px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .modal-header h2 {
-    margin: 0;
+  margin: 0;
 }
 
 .close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    line-height: 1;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
 }
 
 .modal-body {
-    padding: 20px;
+  padding: 20px;
 }
 
 .modal-footer {
-    padding: 20px;
-    border-top: 1px solid #ddd;
-    text-align: left;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  text-align: left;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #2c3e50;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
 .form-control {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .radio-group {
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
 }
 
 .radio-group label {
-    display: flex;
-    align-items: center;
-    font-weight: normal;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
 }
 
 .radio-group input {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .cancel-btn {
-    background: #95a5a6;
-    color: white;
+  background: #95a5a6;
+  color: white;
 }
 
 .submit-btn {
-    background: #27ae60;
-    color: white;
+  background: #27ae60;
+  color: white;
 }
 
 /* وضعیت‌ها */
 .need-status {
-    background: #3498db;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
+  background: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .want-status {
-    background: #9b59b6;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
+  background: #9b59b6;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .priority-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .priority-high {
-    background: #e74c3c;
-    color: white;
+  background: #e74c3c;
+  color: white;
 }
 
 .priority-medium {
-    background: #f39c12;
-    color: white;
+  background: #f39c12;
+  color: white;
 }
 
 .priority-low {
-    background: #27ae60;
-    color: white;
+  background: #27ae60;
+  color: white;
 }
