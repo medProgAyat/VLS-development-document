@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سند الزامات رسمی</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- نوار ابزار -->
+      <div class="toolbar">
+        <button onclick="window.print()" class="btn print-btn">
+          <i class="fas fa-print"></i> پرینت
+        </button>
+        <button onclick="saveDocument()" class="btn save-btn">
+          <i class="fas fa-save"></i> ذخیره
+        </button>
+        <button onclick="resetDocument()" class="btn reset-btn">
+          <i class="fas fa-redo"></i> جدید
+        </button>
+      </div>
+
+      <!-- صفحه قابل پرینت -->
+      <div class="printable-page" id="printablePage">
+        <!-- هدر با لوگو و اطلاعات -->
+        <div class="document-header">
+          <div class="logo-section">
+            <div class="logo-placeholder">
+              <img
+                width="128"
+                src="virtual_lab_systems_for_modern_education_needs.jpeg"
+                alt="virtual lab systems for modern education needs"
+              />
+            </div>
+          </div>
+
+          <div class="header-grid">
+            <!-- ردیف اول: سه ستون -->
+            <div class="header-row first-row">
+              <div class="header-col">
+                <div class="info-item">
+                  <span>شماره برگه:</span>
+                  <input
+                    type="number"
+                    id="pageNumber"
+                    value="1"
+                    min="1"
+                    class="number-input"
+                  />
+                </div>
+                <div class="info-item">
+                  <span>تعداد کل برگه‌ها:</span>
+                  <input
+                    type="number"
+                    id="totalPages"
+                    value="1"
+                    min="1"
+                    class="number-input"
+                  />
+                </div>
+              </div>
+
+              <div class="header-col middle-col">
+                <div class="document-title">
+                  <h1>فهرست الزامات</h1>
+                </div>
+                <div class="project-info">
+                  <div class="info-row">
+                    <span>نام پروژه/محصول:</span>
+                    <input
+                      type="text"
+                      id="projectName"
+                      placeholder="نام پروژه را وارد کنید"
+                    />
+                  </div>
+                  <div class="info-row">
+                    <span>سازمان:</span>
+                    <input
+                      type="text"
+                      id="organization"
+                      placeholder="نام سازمان را وارد کنید"
+                    />
+                  </div>
+                  <div class="info-row">
+                    <span>دپارتمان:</span>
+                    <input
+                      type="text"
+                      id="department"
+                      placeholder="نام دپارتمان را وارد کنید"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="header-col">
+                <div class="info-item">
+                  <span>تاریخ صدور:</span>
+                  <input type="date" id="issueDate" class="date-input" />
+                </div>
+                <div class="info-item">
+                  <span>تاریخ آخرین تغییر:</span>
+                  <input
+                    type="date"
+                    id="lastChangeDate"
+                    class="date-input"
+                    readonly
+                  />
+                </div>
+                <div class="info-item">
+                  <span>نسخه:</span>
+                  <input
+                    type="text"
+                    id="version"
+                    value="1.0"
+                    class="version-input"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- جدول الزامات -->
+        <div class="requirements-table-container">
+          <table class="requirements-table">
+            <thead>
+              <tr>
+                <th width="8%">شماره</th>
+                <th width="30%">الزامات</th>
+                <th width="15%">مسئول / منبع</th>
+                <th width="10%">نیاز</th>
+                <th width="22%">
+                  <div>خواسته</div>
+                  <div class="sub-header">میزان اهمیت</div>
+                </th>
+                <th width="15%">تاریخ آخرین تغییر</th>
+                <th class="noPrint" width="5%"></th>
+              </tr>
+            </thead>
+            <tbody id="requirementsTableBody">
+              <!-- ردیف‌ها به صورت پویا اضافه می‌شوند -->
+            </tbody>
+          </table>
+          <div class="noPrint">
+            <button class="add-row-btn" onclick="openAddModal()">
+              <i class="fas fa-plus"></i> افزودن الزام جدید
+            </button>
+          </div>
+        </div>
+
+        <!-- فوتر -->
+        <div class="document-footer">
+          <p>
+            این سند رسمی متعلق به شرکت <span id="footerOrg"></span> می‌باشد و
+            هرگونه کپی برداری بدون اجازه ممنوع است.
+          </p>
+          <p>
+            صفحه <span id="currentPage">1</span> از
+            <span id="totalPagesFooter">1</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- مودال اضافه کردن الزام -->
+    <div id="addRequirementModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>افزودن الزام جدید</h2>
+          <button class="close-btn" onclick="closeAddModal()">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="reqNumber">شماره:</label>
+            <input type="number" id="reqNumber" readonly class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="reqText">الزامات *</label>
+            <textarea
+              id="reqText"
+              rows="4"
+              class="form-control"
+              placeholder="شرح الزام را وارد کنید"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="reqResponsible">مسئول / منبع *</label>
+            <input
+              type="text"
+              id="reqResponsible"
+              class="form-control"
+              placeholder="نام مسئول یا منبع"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>نوع *</label>
+            <div class="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  name="reqType"
+                  value="need"
+                  checked
+                  onchange="togglePriorityField()"
+                />
+                نیاز
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="reqType"
+                  value="want"
+                  onchange="togglePriorityField()"
+                />
+                خواسته
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="priorityField" style="display: none">
+            <label for="reqPriority">میزان اهمیت *</label>
+            <select id="reqPriority" class="form-control">
+              <option value="بسیار بالا">بسیار بالا</option>
+              <option value="بالا">بالا</option>
+              <option value="متوسط">متوسط</option>
+              <option value="پایین">پایین</option>
+              <option value="بسیار پایین">بسیار پایین</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="reqLastChange">تاریخ آخرین تغییر:</label>
+            <input
+              type="date"
+              id="reqLastChange"
+              class="form-control"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn cancel-btn" onclick="closeAddModal()">لغو</button>
+          <button class="btn submit-btn" onclick="addRequirement()">
+            ذخیره الزام
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- مودال ویرایش -->
+    <div id="editRequirementModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>ویرایش الزام</h2>
+          <button class="close-btn" onclick="closeEditModal()">&times;</button>
+        </div>
+
+        <div class="modal-body" id="editModalBody">
+          <!-- محتوای ویرایش -->
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
