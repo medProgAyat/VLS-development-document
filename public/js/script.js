@@ -18,13 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
 // بارگذاری اطلاعات سند
 async function loadDocumentInfo() {
   try {
-    const response = await fetch("/api/requirements");
+    const response = await fetch("/api/document-info", {
+      method: "POST",
+    });
     if (response.ok) {
       const data = await response.json();
-      // محاسبه تعداد صفحات بر اساس تعداد الزامات
-      const totalPages = Math.ceil(data.length / 15) || 1;
-      document.getElementById("totalPages").value = totalPages;
-      document.getElementById("totalPagesFooter").textContent = totalPages;
+      renderDocumentInfo(data);
     }
   } catch (error) {
     console.error("Error loading document info:", error);
@@ -37,6 +36,10 @@ async function loadRequirements() {
     const response = await fetch("/api/requirements");
     if (response.ok) {
       currentRequirements = await response.json();
+      // محاسبه تعداد صفحات بر اساس تعداد الزامات
+      const totalPages = Math.ceil(currentRequirements.length / 15) || 1;
+      document.getElementById("totalPages").value = totalPages;
+      document.getElementById("totalPagesFooter").textContent = totalPages;
       renderRequirementsTable();
     }
   } catch (error) {
@@ -478,4 +481,12 @@ function setupEventListeners() {
       window.saveTimeout = setTimeout(saveDocument, 1000);
     });
   });
+}
+
+function renderDocumentInfo(documentInfo) {
+  document.getElementById("projectName").value = documentInfo.projectName;
+  document.getElementById("organization").value = documentInfo.organization;
+  document.getElementById("department").value = documentInfo.department;
+  document.getElementById("version").value = documentInfo.version;
+  document.getElementById("totalPages").valuecv = documentInfo.totalPages || 1;
 }
